@@ -56,7 +56,7 @@ while(iter < 1e4):
         plt.ylabel('Loss / Cost')
         plt.xlabel('iteration no.')
         plt.title('Cost function vs. iterations')
-        plt.pause(0.001)
+        plt.pause(0.1)  # change pause time to accommodate for graphing speed
         
         # check for convergence
         if len(loss) > 2:
