@@ -1,4 +1,4 @@
-# Author: Ahmed Alkhayal - EE482
+# Author: Ahmed Alkhayal - EE482 Fall 2022 (https://github.com/Alkhayal7)
 
 import numpy as np
 import matplotlib.pyplot as plt
