@@ -30,7 +30,7 @@ while(1)
     theta = theta - lr*dJ';         %theta update 
     loss = [loss,J];                %loss/cost history for plotting
     
-    if(rem(iter,10)==0) %Plot every 10 iterations only
+    if(rem(iter,100)==0) %Plot every 10 iterations only
         subplot(1,2,1)
         scatter(x,y)
         hold on
@@ -58,27 +58,17 @@ while(1)
     end
 end
 
-% Ypred = theta*trainX;
-% figure
-% plot(x,Ypred)
-% hold on
-% scatter(x,y)
-% xlabel('X Values (Feature)')
-% ylabel('Y Values (Label)')
-% 
+theta_gd = theta
+
 % %Solution using Normal Equation
-% n = length(x);
-% Sx = sum(x);
-% Sx2 = sum(x.^2);
-% Sy = sum(y);
-% Sxy = sum(x.*y);
-% X = [n Sx;Sx Sx2];
-% Y = [Sy;Sxy];
-% % X * thetas = Y, thetas = inv(X)*Y
-% thetas = inv(X)*Y;
-% Ypred = thetas(1) + x*thetas(2);
-% hold on
-% plot(x,Ypred)
+n = length(x);
+Sx = sum(x);
+Sx2 = sum(x.^2);
+Sy = sum(y);
+Sxy = sum(x.*y);
+X = [n Sx;Sx Sx2];
+Y = [Sy;Sxy];
+theta_normal_eq = inv(X)*Y
 
 % Why Normal Equation method is not used in practice? Inverse is too slow.
 % Also, it can only be used for polynomial hypothesis, not for deep NN.
@@ -86,4 +76,9 @@ end
 % tic
 % invr = inv(r);
 % toc
+
+% Pseudo-inverse Method -19.7401 5.2872
+theta_pseudo_inv = ((inv(trainX*trainX')*trainX))*trainY'
+
+
 
